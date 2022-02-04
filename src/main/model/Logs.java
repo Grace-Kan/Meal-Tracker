@@ -21,8 +21,15 @@ public class Logs {
         sunday = new Meals();
 
     }
+    //REQUIRES: day must be either "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" or "Sunday"
+    //MODIFIES: this
+    //EFFECTS: adds food item to the meals of the given day
+    public void addMealsByDay(String day, FoodItem food){
+        // TODO
+    }
 
-    //REQUIRES: string must be either "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" or "Sunday"
+
+    //REQUIRES: day must be either "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" or "Sunday"
     //EFFECTS: returns the meals corresponding to the given day
     public Meals getMealsByDay(String day) {
         return null;
