@@ -13,15 +13,8 @@ public class LogsTest {
         testLog = new Logs();
     }
 
-    @Test
     void testConstructor(){
-        assertEquals(new Meals(), testLog.getMonday());
-        assertEquals(new Meals(), testLog.getTuesday());
-        assertEquals(new Meals(), testLog.getWednesday());
-        assertEquals(new Meals(), testLog.getThursday());
-        assertEquals(new Meals(), testLog.getFriday());
-        assertEquals(new Meals(), testLog.getSaturday());
-        assertEquals(new Meals(), testLog.getSunday());
+        //TODO
     }
 
     @Test
@@ -33,7 +26,7 @@ public class LogsTest {
         assertEquals(1, testLog.getTuesday().getDinner().size());
 
         testLog.addMealsByDay("Wednesday", new FoodItem("Cookies", "snacks"));
-        assertEquals(1, testLog.getWednesday().getDinner().size());
+        assertEquals(1, testLog.getWednesday().getSnacks().size());
 
         testLog.addMealsByDay("Thursday", new FoodItem("Salad", "lunch"));
         assertEquals(1, testLog.getThursday().getLunch().size());
