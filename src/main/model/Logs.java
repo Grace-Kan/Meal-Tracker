@@ -23,6 +23,7 @@ public class Logs {
         sunday = new Meals();
 
     }
+
     //REQUIRES: day must be either "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" or "Sunday"
     //MODIFIES: this
     //EFFECTS: adds food item to the meals of the given day
