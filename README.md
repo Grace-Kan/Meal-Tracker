@@ -2,10 +2,10 @@
 
 ## About this project:
 
-My project is a health tracker that allows users to log:
+My project is a Meal tracker that allows users to log:
 
-- What they had for their **meals and snacks**
-- **Water intake** (how many cups of water they had)
+- What they had for their **meals and snacks** every day of the week
+- **Water intake** (how many cups of water they had) every day of the week
 
 ## Who will use it?
 
@@ -22,9 +22,8 @@ of yourself can benefit many people and help them achieve a healthier lifestyle.
 
 ## User Stories
 
-- As a user I want to be able to add a food item to my list of meals for the day
-- As a user I want to be able to delete a food item to my list of meals for the day
-- As a user I want to be able to log how many cups of water I had for the day 
-- As a user I want to be able to change the amount of cups of water 
-- As a user I want to be able to view the list of meals from a certain day
-- As a user I want to be able to view the cups of water from a certain day
+- As a user I want to be able to select a day and add a food item to a meal
+- As a user I want to be able to view what I had for a meal on a certain day
+- As a user I want to be able to delete a food item from a meal
+- As a user I want to be able to log how many servings I had of a food 
+- As a user I want to be able to change the servings I had of a food

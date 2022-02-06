@@ -27,17 +27,17 @@ public class Logs {
     //MODIFIES: this
     //EFFECTS: adds food item to the meals of the given day
     public void addMealsByDay(String day, FoodItem food) {
-        if (day == "Monday") {
+        if (day.equals("Monday")) {
             monday.addMealByMealTypes(food);
-        } else if (day == "Tuesday") {
+        } else if (day.equals("Tuesday")) {
             tuesday.addMealByMealTypes(food);
-        } else if (day == "Wednesday") {
+        } else if (day.equals("Wednesday")) {
             wednesday.addMealByMealTypes(food);
-        } else if (day == "Thursday") {
+        } else if (day.equals("Thursday")) {
             thursday.addMealByMealTypes(food);
-        } else if (day == "Friday") {
+        } else if (day.equals("Friday")) {
             friday.addMealByMealTypes(food);
-        } else if (day == "Saturday") {
+        } else if (day.equals("Saturday")) {
             saturday.addMealByMealTypes(food);
         } else {
             sunday.addMealByMealTypes(food);
@@ -48,22 +48,48 @@ public class Logs {
     //REQUIRES: day must be either "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" or "Sunday"
     //EFFECTS: returns the meals corresponding to the given day
     public Meals getMealsByDay(String day) {
-        if (day == "Monday") {
+        if (day.equals("Monday")) {
             return monday;
-        } else if (day == "Tuesday") {
+        } else if (day.equals("Tuesday")) {
             return tuesday;
-        } else if (day == "Wednesday") {
+        } else if (day.equals("Wednesday")) {
             return wednesday;
-        } else if (day == "Thursday") {
+        } else if (day.equals("Thursday")) {
             return thursday;
-        } else if (day == "Friday") {
+        } else if (day.equals("Friday")) {
             return friday;
-        } else if (day == "Saturday") {
+        } else if (day.equals("Saturday")) {
             return saturday;
         } else {
             return sunday;
         }
+    }
 
+    //REQUIRES: mealType must be "breakfast", "lunch", "dinner", or "snacks"
+    //EFFECTS: returns true if given mealType contains the food item with title of the given foodItem, false otherwise
+    public Boolean mealContains(String day, String mealType, String foodItem) {
+        for (FoodItem fi : getMealsByDay(day).getAllMealsByMealTypes(mealType)) {
+            if (fi.getMealTitle().equals(foodItem)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //REQUIRES: mealType must be "breakfast", "lunch", "dinner", or "snacks"
+    //MODIFIES: this
+    //EFFECTS: removes the foodItem with the given foodTitle from the given mealType
+    public void removeFood(String day, String mealType, String foodTitle) {
+        FoodItem itemToRemove = null;
+        for (FoodItem fi : getMealsByDay(day).getAllMealsByMealTypes(mealType)) {
+            if (fi.getMealTitle().equals(foodTitle)) {
+                itemToRemove = fi;
+            }
+        }
+
+        if (itemToRemove != null) {
+            getMealsByDay(day).getAllMealsByMealTypes(mealType).remove(itemToRemove);
+        }
     }
 
     public Meals getMonday() {
