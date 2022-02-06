@@ -7,11 +7,13 @@ import model.Meals;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Meal Tracker console application
 public class ConsoleInteraction {
     Scanner sc;
     Logs log;
     String action;
 
+    //EFFECTS: runs the meal tracker application
     public ConsoleInteraction() {
         sc = new Scanner(System.in);
         log = new Logs();
@@ -40,8 +42,10 @@ public class ConsoleInteraction {
 
     }
 
+    //EFFECTS: Displays the food items logged for the meal of the day user selects
     private void viewMeals() {
-        System.out.println("Which Day would you like to view?");
+        System.out.println("Which Day would you like to view? "
+                + "(Monday, Tuesday, Wednesday,Thursday, Friday, Saturday, Sunday)");
         String logDay = sc.nextLine();
         System.out.println("Which meal would you like to view? (breakfast, lunch, dinner, snacks)");
         String logMeal = sc.nextLine();
@@ -53,6 +57,8 @@ public class ConsoleInteraction {
 
     }
 
+    //MODIFIES: Logs
+    //EFFECTS: processes user commands and adds food item entered by user to the day and meal entered
     private void addMeal() {
         System.out.println("Please enter the day you wish to log"
                 + " (Monday, Tuesday, Wednesday,Thursday, Friday, Saturday, Sunday)");
@@ -67,6 +73,8 @@ public class ConsoleInteraction {
         System.out.println("Success! Added " + mealTitle);
     }
 
+    //MODIFIES: Logs
+    //EFFECTS: processes user commands and deletes food item entered by user from the day and meal entered
     private void deleteMeal() {
         System.out.println("Please enter the day you wish to edit "
                 + "(Monday, Tuesday, Wednesday,Thursday, Friday, Saturday, Sunday)");
@@ -79,17 +87,19 @@ public class ConsoleInteraction {
             log.removeFood(dayToEdit, mealToEdit, foodToDelete);
             System.out.println("Success! " + foodToDelete + " was deleted");
         } else {
-            System.out.println("Sorry, the food you entered could not be found");
+            System.out.println("Sorry, the food you entered could not be found. Please try again");
         }
     }
 
+    //MODIFIES: FoodItem
+    //EFFECTS: processes user commands and changes servings amount of entered food item
     private void editServings() {
         System.out.println("Please enter the day you wish to edit "
                 + "(Monday, Tuesday, Wednesday,Thursday, Friday, Saturday, Sunday)");
         String dayToEdit = sc.nextLine();
         System.out.println("Please enter the meal type you wish to edit (breakfast, lunch, dinner, snacks)");
         String mealToEdit = sc.nextLine();
-        System.out.println("Please the food item you wish to edit the serving for");
+        System.out.println("Please enter the food item you wish to edit the serving for");
         String foodToEdit = sc.nextLine();
         System.out.println("How many servings would you like to add?");
         String servingsToAdd = sc.nextLine();
@@ -101,6 +111,7 @@ public class ConsoleInteraction {
         }
     }
 
+    //EFFECTS: converts list of foodItems into a string
     private String convertToOneString(ArrayList<FoodItem> foodItems) {
         String listOfFoods = "";
         for (FoodItem fi: foodItems) {

@@ -23,24 +23,31 @@ public class LogsTest {
     void testAddMealsByDay(){
         testLog.addMealsByDay("Monday", new FoodItem("Egg", "breakfast", 1));
         assertEquals(1, testLog.getMonday().getBreakfast().size());
+        assertEquals("Egg", testLog.getMonday().getBreakfast().get(0).getMealTitle());
 
         testLog.addMealsByDay("Tuesday", new FoodItem("Burger", "dinner", 1));
         assertEquals(1, testLog.getTuesday().getDinner().size());
+        assertEquals("Burger", testLog.getTuesday().getDinner().get(0).getMealTitle());
 
         testLog.addMealsByDay("Wednesday", new FoodItem("Cookies", "snacks", 2));
         assertEquals(1, testLog.getWednesday().getSnacks().size());
+        assertEquals("Cookies", testLog.getWednesday().getSnacks().get(0).getMealTitle());
 
         testLog.addMealsByDay("Thursday", new FoodItem("Salad", "lunch", 1));
         assertEquals(1, testLog.getThursday().getLunch().size());
+        assertEquals("Salad", testLog.getThursday().getLunch().get(0).getMealTitle());
 
         testLog.addMealsByDay("Friday", new FoodItem("Noodles", "lunch", 1));
         assertEquals(1, testLog.getFriday().getLunch().size());
+        assertEquals("Noodles", testLog.getFriday().getLunch().get(0).getMealTitle());
 
         testLog.addMealsByDay("Saturday", new FoodItem("Burrito", "dinner", 2));
         assertEquals(1, testLog.getSaturday().getDinner().size());
+        assertEquals("Burrito", testLog.getSaturday().getDinner().get(0).getMealTitle());
 
         testLog.addMealsByDay("Sunday", new FoodItem("Matcha Ice Cream", "snacks", 2));
         assertEquals(1, testLog.getSunday().getSnacks().size());
+        assertEquals("Matcha Ice Cream", testLog.getSunday().getSnacks().get(0).getMealTitle());
 
     }
 
