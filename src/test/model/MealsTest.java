@@ -21,6 +21,24 @@ class MealsTest {
         assertEquals(0, testMeals.getSnacks().size());
     }
 
+    @Test
+    void testGetAllMealsByMealType() {
+        FoodItem testBreakfast = new FoodItem("food", "breakfast", 1);
+        FoodItem testLunch = new FoodItem("food", "lunch", 1);
+        FoodItem testDinner = new FoodItem("food", "dinner", 1);
+        FoodItem testSnacks = new FoodItem("food", "snacks", 1);
+
+        testMeals.addMealByMealTypes(testBreakfast);
+        testMeals.addMealByMealTypes(testLunch);
+        testMeals.addMealByMealTypes(testDinner);
+        testMeals.addMealByMealTypes(testSnacks);
+
+        assertEquals(testBreakfast, testMeals.getAllMealsByMealTypes("breakfast").get(0));
+        assertEquals(testLunch, testMeals.getAllMealsByMealTypes("lunch").get(0));
+        assertEquals(testDinner, testMeals.getAllMealsByMealTypes("dinner").get(0));
+        assertEquals(testSnacks, testMeals.getAllMealsByMealTypes("snacks").get(0));
+    }
+
 
     @Test
     void testAddBreakfast() {

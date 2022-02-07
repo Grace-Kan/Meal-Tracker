@@ -52,10 +52,32 @@ public class LogsTest {
     }
 
     @Test
+    void testGetMealsByDay() {
+        FoodItem testFood = new FoodItem("Noodles", "breakfast", 1);
+
+        testLog.addMealsByDay("Monday", testFood);
+        testLog.addMealsByDay("Tuesday", testFood);
+        testLog.addMealsByDay("Wednesday", testFood);
+        testLog.addMealsByDay("Thursday", testFood);
+        testLog.addMealsByDay("Friday", testFood);
+        testLog.addMealsByDay("Saturday", testFood);
+        testLog.addMealsByDay("Sunday", testFood);
+
+        assertEquals(testFood, testLog.getMealsByDay("Monday").getBreakfast().get(0));
+        assertEquals(testFood, testLog.getMealsByDay("Tuesday").getBreakfast().get(0));
+        assertEquals(testFood, testLog.getMealsByDay("Wednesday").getBreakfast().get(0));
+        assertEquals(testFood, testLog.getMealsByDay("Thursday").getBreakfast().get(0));
+        assertEquals(testFood, testLog.getMealsByDay("Friday").getBreakfast().get(0));
+        assertEquals(testFood, testLog.getMealsByDay("Saturday").getBreakfast().get(0));
+        assertEquals(testFood, testLog.getMealsByDay("Sunday").getBreakfast().get(0));
+    }
+
+    @Test
     void testMealContains() {
         assertFalse(testLog.mealContains("Monday", "breakfast", "food"));
         testLog.addMealsByDay("Monday", new FoodItem("noodles", "dinner", 2));
         assertTrue(testLog.mealContains("Monday", "dinner", "noodles"));
+        assertFalse(testLog.mealContains("Monday", "dinner", "rice"));
 
 
     }
@@ -65,6 +87,8 @@ public class LogsTest {
         testLog.addMealsByDay("Monday", new FoodItem("noodles", "dinner", 2));
         testLog.addMealsByDay("Monday", new FoodItem("ramen", "dinner", 2));
         testLog.removeFood("Monday", "dinner", "ramen");
+        assertEquals(1, testLog.getMealsByDay("Monday").getAllMealsByMealTypes("dinner").size());
+        testLog.removeFood("Monday", "dinner", "hotpot");
         assertEquals(1, testLog.getMealsByDay("Monday").getAllMealsByMealTypes("dinner").size());
 
     }
