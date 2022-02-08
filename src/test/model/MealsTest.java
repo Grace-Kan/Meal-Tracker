@@ -77,5 +77,7 @@ class MealsTest {
         testMeals.addMealByMealTypes(new FoodItem("toast", "breakfast", 1));
         testMeals.addServings("breakfast", "toast", "3" );
         assertEquals(4, testMeals.getBreakfast().get(0).getServings());
+        testMeals.addServings("breakfast", "yogurt", "1");
+        assertEquals(4, testMeals.getBreakfast().get(0).getServings());
     }
 }
