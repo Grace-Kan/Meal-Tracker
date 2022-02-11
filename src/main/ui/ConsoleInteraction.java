@@ -28,16 +28,16 @@ public class ConsoleInteraction {
 
         System.out.println("Welcome to Meal Tracker!");
         while (!action.equals("exit")) {
-            System.out.println("What would you like to do? (Choose between: add meal, delete meal, view meal,"
+            System.out.println("What would you like to do? (Choose between: add food, delete food, view meal,"
                     + " edit servings or exit)");
             action = sc.nextLine();
 
-            if (action.equals("add meal")) {
-                addMeal();
+            if (action.equals("add food")) {
+                addFood();
             } else if (action.equals("view meal")) {
                 viewMeals();
-            } else if (action.equals("delete meal")) {
-                deleteMeal();
+            } else if (action.equals("delete food")) {
+                deleteFood();
             } else if (action.equals("edit servings")) {
                 editServings();
             } else if (action.equals("exit")) {
@@ -74,7 +74,7 @@ public class ConsoleInteraction {
 
     //MODIFIES: this
     //EFFECTS: processes user commands and adds food item entered by user to the day and meal entered
-    private void addMeal() {
+    private void addFood() {
         System.out.println("Please enter the day you wish to log"
                 + " (Monday, Tuesday, Wednesday,Thursday, Friday, Saturday, Sunday)");
         String mealTime = sc.nextLine();
@@ -98,7 +98,7 @@ public class ConsoleInteraction {
 
     //MODIFIES: this
     //EFFECTS: processes user commands and deletes food item entered by user from the day and meal entered
-    private void deleteMeal() {
+    private void deleteFood() {
         System.out.println("Please enter the day you wish to edit "
                 + "(Monday, Tuesday, Wednesday,Thursday, Friday, Saturday, Sunday)");
         String dayToEdit = sc.nextLine();

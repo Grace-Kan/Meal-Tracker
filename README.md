@@ -1,14 +1,12 @@
 # Health Tracker Project
 
-## About this project:
+## About this project and Who Will Use It?:
 
 My project is a Meal tracker that allows users to log:
 
 - What they had for their **meals** (breakfast, lunch, dinner and snacks)
 every day of the week from **Monday to Sunday**.
 - How many **servings** they had of a certain food
-
-## Who will use it?
 
 This application can help users stick to their personal goals and motivate them to achieve those goals. 
 It allows users to see visually the changes in their diet and the improvements in their lifestyles, 
@@ -25,7 +23,7 @@ of yourself can benefit many people and help them achieve a healthier lifestyle.
 
 ## User Stories
 
-- As a user I want to be able to select a day and add a food item with how many servings to a meal
+- As a user I want to be able to add a food item (with how many servings) to a meal of a certain day
 - As a user I want to be able to view what I had for a meal on a certain day
 - As a user I want to be able to delete a food item from a meal 
 - As a user I want to be able to change the servings I had of a food
