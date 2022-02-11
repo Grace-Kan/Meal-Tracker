@@ -91,7 +91,7 @@ public class LogsTest {
         assertFalse(testLog.mealContains("Monday", "snacks", "food"));
         testLog.addMealsByDay("Monday", testMon);
         assertTrue(testLog.mealContains("Monday", "breakfast", "Egg"));
-        assertFalse(testLog.mealContains("Monday", "dinner", "rice"));
+        assertFalse(testLog.mealContains("Monday", "breakfast", "rice"));
 
 
     }
