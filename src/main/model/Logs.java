@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 // Represents the logs throughout the days of the week from Monday to Sunday
 public class Logs {
     private Meals monday;
@@ -25,7 +23,7 @@ public class Logs {
     }
 
     //REQUIRES: day must be either "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" or "Sunday"
-    //MODIFIES: this
+    //MODIFIES: this and Meals
     //EFFECTS: adds food item to the meals of the given day
     public void addMealsByDay(String day, FoodItem food) {
         if (day.equals("Monday")) {
@@ -67,10 +65,11 @@ public class Logs {
     }
 
     //REQUIRES: mealType must be "breakfast", "lunch", "dinner", or "snacks"
-    //EFFECTS: returns true if given mealType contains the food item with title of the given foodItem, false otherwise
+    //EFFECTS: returns true if given mealType of given day
+    // contains the food item with title of the given foodItem, false otherwise
     public Boolean mealContains(String day, String mealType, String foodItem) {
         for (FoodItem fi : getMealsByDay(day).getAllMealsByMealTypes(mealType)) {
-            if (fi.getMealTitle().equals(foodItem)) {
+            if (fi.getFoodTitle().equals(foodItem)) {
                 return true;
             }
         }
@@ -78,12 +77,12 @@ public class Logs {
     }
 
     //REQUIRES: mealType must be "breakfast", "lunch", "dinner", or "snacks"
-    //MODIFIES: this
+    //MODIFIES: this and Meals
     //EFFECTS: removes the foodItem with the given foodTitle from the given mealType
     public void removeFood(String day, String mealType, String foodTitle) {
         FoodItem itemToRemove = null;
         for (FoodItem fi : getMealsByDay(day).getAllMealsByMealTypes(mealType)) {
-            if (fi.getMealTitle().equals(foodTitle)) {
+            if (fi.getFoodTitle().equals(foodTitle)) {
                 itemToRemove = fi;
             }
         }

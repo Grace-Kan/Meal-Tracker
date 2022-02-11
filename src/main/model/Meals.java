@@ -17,8 +17,8 @@ public class Meals {
         snacks = new ArrayList();
     }
 
-    //REQUIRES: must give in "breakfast", "lunch", "dinner", or snacks"
-    //EFFECTS: returns the list of food items for corresponding to the given meal type
+    //REQUIRES: must give in "breakfast", "lunch", "dinner", or "snacks"
+    //EFFECTS: returns the list of food items corresponding to the given meal type
     public ArrayList<FoodItem> getAllMealsByMealTypes(String mealType) {
         if (mealType.equals("breakfast")) {
             return breakfast;
@@ -48,11 +48,11 @@ public class Meals {
 
 
     //REQUIRES: mealType must be "breakfast", "lunch", "dinner", or "snacks", and serving must be >= 0
-    //MODIFIES: serving of food item with given food Title
+    //MODIFIES: FoodItem
     //EFFECTS: looks for food item with given food title and adds given amount of serving to the food item's serving
     public void addServings(String mealType, String foodTitle, String serving) {
         for (FoodItem fi : getAllMealsByMealTypes(mealType)) {
-            if (fi.getMealTitle().equals(foodTitle)) {
+            if (fi.getFoodTitle().equals(foodTitle)) {
                 fi.changeServings(Double.parseDouble(serving));
             }
         }

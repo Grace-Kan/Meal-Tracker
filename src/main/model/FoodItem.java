@@ -2,14 +2,14 @@ package model;
 
 // Represents a FoodItem with a meal title, meal type and amount of servings
 public class FoodItem {
-    private String mealTitle;
+    private String foodTitle;
     private String mealType;
     private double servings;
 
     //REQUIRES: mealType must be "breakfast", "lunch", "dinner", or "snacks", and servings must be >= 0
     //EFFECTS: constructs a food item with the given meal title, meal type and servings
-    public FoodItem(String mealTitle, String mealType, double servings) {
-        this.mealTitle = mealTitle;
+    public FoodItem(String foodTitle, String mealType, double servings) {
+        this.foodTitle = foodTitle;
         this.mealType = mealType;
         this.servings = servings;
     }
@@ -21,8 +21,9 @@ public class FoodItem {
         this.servings = this.servings + servings;
     }
 
-    public String getMealTitle() {
-        return mealTitle;
+
+    public String getFoodTitle() {
+        return foodTitle;
     }
 
     public String getMealType() {

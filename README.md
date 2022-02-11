@@ -4,7 +4,8 @@
 
 My project is a Meal tracker that allows users to log:
 
-- What they had for their **meals and snacks** every day of the week
+- What they had for their **meals** (breakfast, lunch, dinner and snacks)
+every day of the week from **Monday to Sunday**.
 - How many **servings** they had of a certain food
 
 ## Who will use it?
