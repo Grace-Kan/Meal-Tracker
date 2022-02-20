@@ -27,3 +27,5 @@ of yourself can benefit many people and help them achieve a healthier lifestyle.
 - As a user I want to be able to view what I had for a meal on a certain day
 - As a user I want to be able to delete a food item from a meal 
 - As a user I want to be able to change the servings I had of a food
+- As a user I want to be able to save my meals of the week to file
+- As a user I want to be able to load my meals of the week from file
