@@ -1,23 +1,32 @@
 package ui;
 
 import model.FoodItem;
-import model.Logs;
+import model.MealTracker;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 // Meal Tracker console application
 public class MealTrackerApp {
-    Scanner sc;
-    Logs log;
-    String action;
+    private static final String FILE_NAME = "./data/mealtracker.json";
+    private Scanner sc;
+    private MealTracker log;
+    private String action;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     //EFFECTS: Constructs a ConsoleInteraction with a scanner, new Logs and an empty string as the action. Also
     //runs the meal tracker application
     public MealTrackerApp() {
         sc = new Scanner(System.in);
-        log = new Logs();
+        log = new MealTracker("Feb 21-27");
         action = "";
+        jsonWriter = new JsonWriter(FILE_NAME);
+        jsonReader = new JsonReader(FILE_NAME);
         runApplication();
     }
 
@@ -25,11 +34,10 @@ public class MealTrackerApp {
     // EFFECTS: processes user command
     // referenced from SimpleCalculatorStarterLecLab
     public void runApplication() {
-
         System.out.println("Welcome to Meal Tracker!");
         while (!action.equals("exit")) {
             System.out.println("What would you like to do? (Choose between: add food, delete food, view meal,"
-                    + " edit servings or exit)");
+                    + " edit servings, save log, load previous log, or exit)");
             action = sc.nextLine();
 
             if (action.equals("add food")) {
@@ -40,13 +48,16 @@ public class MealTrackerApp {
                 deleteFood();
             } else if (action.equals("edit servings")) {
                 editServings();
+            } else if (action.equals("save log")) {
+                saveLog();
+            } else if (action.equals("load previous log")) {
+                loadLog();
             } else if (action.equals("exit")) {
                 System.out.println("Bye, thank you for using Meal Tracker!");
             } else {
                 System.out.println("I didn't understand that, try again.");
             }
         }
-
     }
 
 
@@ -63,10 +74,11 @@ public class MealTrackerApp {
             if (!checkValidMeal(logMeal)) {
                 System.out.println("Sorry, I didn't understand that, try again");
             } else {
-                if (log.getMealsByDay(logDay).getAllMealsByMealTypes(logMeal).size() == 0) {
+                if (log.getLog().getMealsByDay(logDay).getAllMealsByMealTypes(logMeal).size() == 0) {
                     System.out.println("No food was logged");
                 } else {
-                    System.out.println(convertToOneString(log.getMealsByDay(logDay).getAllMealsByMealTypes(logMeal)));
+                    System.out.println(
+                            convertToOneString(log.getLog().getMealsByDay(logDay).getAllMealsByMealTypes(logMeal)));
                 }
             }
         }
@@ -90,7 +102,8 @@ public class MealTrackerApp {
                 String mealTitle = sc.nextLine();
                 System.out.println("Please enter the servings");
                 String mealServings = sc.nextLine();
-                log.addMealsByDay(mealTime, new FoodItem(mealTitle, mealType, Double.parseDouble(mealServings)));
+                log.getLog().addMealsByDay(mealTime,
+                        new FoodItem(mealTitle, mealType, Double.parseDouble(mealServings)));
                 System.out.println("Success! Added " + mealTitle);
             }
         }
@@ -112,8 +125,8 @@ public class MealTrackerApp {
             } else {
                 System.out.println("Please indicate the item you wish to delete");
                 String foodToDelete = sc.nextLine();
-                if (log.mealContains(dayToEdit, mealToEdit, foodToDelete)) {
-                    log.removeFood(dayToEdit, mealToEdit, foodToDelete);
+                if (log.getLog().mealContains(dayToEdit, mealToEdit, foodToDelete)) {
+                    log.getLog().removeFood(dayToEdit, mealToEdit, foodToDelete);
                     System.out.println("Success! " + foodToDelete + " was deleted");
                 } else {
                     System.out.println("Sorry, the food you entered could not be found. Please try again");
@@ -140,13 +153,35 @@ public class MealTrackerApp {
                 String foodToEdit = sc.nextLine();
                 System.out.println("How many servings would you like to add?");
                 String servingsToAdd = sc.nextLine();
-                if (log.mealContains(dayToEdit, mealToEdit, foodToEdit)) {
-                    log.getMealsByDay(dayToEdit).addServings(mealToEdit, foodToEdit, servingsToAdd);
+                if (log.getLog().mealContains(dayToEdit, mealToEdit, foodToEdit)) {
+                    log.getLog().getMealsByDay(dayToEdit).addServings(mealToEdit, foodToEdit, servingsToAdd);
                     System.out.println("Success! Servings were added");
                 } else {
                     System.out.println("Sorry, the food you entered could not be found. Please try again");
                 }
             }
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS:
+    private void saveLog() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(log);
+            jsonWriter.close();
+            System.out.println("Log saved to" + FILE_NAME);
+        } catch (FileNotFoundException e) {
+            System.out.println("The file you wish to save to does not exist");
+        }
+    }
+
+    private void loadLog() {
+        try {
+            log = jsonReader.read();
+            System.out.println("Loaded " + log.getWeek());
+        } catch (IOException e) {
+            System.out.println("The file you wish to load does not exist");
         }
     }
 
