@@ -1,5 +1,9 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import java.util.ArrayList;
+
 // Represents the logs throughout the days of the week from Monday to Sunday
 public class Logs {
     private Meals monday;
@@ -91,6 +95,36 @@ public class Logs {
             getMealsByDay(day).getAllMealsByMealTypes(mealType).remove(itemToRemove);
         }
     }
+
+    // EFFECTS: returns this as a JSON object
+    public JSONArray logsToJson() {
+        JSONArray json = new JSONArray();
+        json.put(dayToJson("Monday"));
+        json.put(dayToJson("Tuesday"));
+        json.put(dayToJson("Wednesday"));
+        json.put(dayToJson("Thursday"));
+        json.put(dayToJson("Friday"));
+        json.put(dayToJson("Saturday"));
+        json.put(dayToJson("Sunday"));
+
+        return json;
+    }
+
+    public JSONObject dayToJson(String day) {
+        JSONObject json = new JSONObject();
+        json.put(day, logToJson(day));
+        return json;
+    }
+
+    public JSONArray logToJson(String day) {
+        JSONArray json = new JSONArray();
+        json.put(getMealsByDay(day).mealsToJson("breakfast"));
+        json.put(getMealsByDay(day).mealsToJson("lunch"));
+        json.put(getMealsByDay(day).mealsToJson("dinner"));
+        json.put(getMealsByDay(day).mealsToJson("snacks"));
+        return json;
+    }
+
 
     public Meals getMonday() {
         return monday;

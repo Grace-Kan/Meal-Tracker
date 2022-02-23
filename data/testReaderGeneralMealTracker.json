@@ -1,0 +1,131 @@
+{
+  "week": "Feb 21-27",
+  "logs": [
+    {
+      "Monday": [
+        {
+          "breakfast": [
+            {
+              "food name": "hashbrown",
+              "servings": 2.0
+            },
+            {
+              "food name" : "eggs",
+              "servings": 2.0
+            }
+          ]
+        },
+        {
+          "lunch": []
+        },
+        {
+          "dinner": []
+        },
+        {
+          "snacks": []
+        }
+      ]
+    },
+    {
+      "Tuesday": [
+        {
+          "breakfast": []
+        },
+        {
+          "lunch": []
+        },
+        {
+          "dinner": [
+            {
+              "food name" : "steak",
+              "servings": 1.5
+            }
+          ]
+        },
+        {
+          "snacks": []
+        }
+      ]
+    },
+    {
+      "Wednesday": [
+        {
+          "breakfast": []
+        },
+        {
+          "lunch": []
+        },
+        {
+          "dinner": []
+        },
+        {
+          "snacks": []
+        }
+      ]
+    },
+    {
+      "Thursday": [
+        {
+          "breakfast": []
+        },
+        {
+          "lunch": []
+        },
+        {
+          "dinner": []
+        },
+        {
+          "snacks": []
+        }
+      ]
+    },
+    {
+      "Friday": [
+        {
+          "breakfast": []
+        },
+        {
+          "lunch": []
+        },
+        {
+          "dinner": []
+        },
+        {
+          "snacks": []
+        }
+      ]
+    },
+    {
+      "Saturday": [
+        {
+          "breakfast": []
+        },
+        {
+          "lunch": []
+        },
+        {
+          "dinner": []
+        },
+        {
+          "snacks": []
+        }
+      ]
+    },
+    {
+      "Sunday": [
+        {
+          "breakfast": []
+        },
+        {
+          "lunch": []
+        },
+        {
+          "dinner": []
+        },
+        {
+          "snacks": []
+        }
+      ]
+    }
+  ]
+}

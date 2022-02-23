@@ -1,5 +1,9 @@
 package model;
 
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 // Represents the meals of the day, which consists of breakfast, lunch, dinner, and snacks
@@ -57,6 +61,23 @@ public class Meals {
             }
         }
     }
+
+    public JSONObject mealsToJson(String mealType) {
+        JSONObject json = new JSONObject();
+        json.put(mealType, mealToJson(mealType));
+
+        return json;
+    }
+
+    public JSONArray mealToJson(String meal) {
+        JSONArray jsonArray = new JSONArray();
+
+        for (FoodItem fi : getAllMealsByMealTypes(meal)) {
+            jsonArray.put(fi.toJson());
+        }
+        return jsonArray;
+    }
+
 
     public ArrayList<FoodItem> getBreakfast() {
         return breakfast;

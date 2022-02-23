@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 // Represents a FoodItem with a meal title, meal type and amount of servings
 public class FoodItem {
     private String foodTitle;
@@ -14,11 +16,19 @@ public class FoodItem {
         this.servings = servings;
     }
 
+
     //REQUIRES: servings must be >= 0
     //MODIFIES: this
     //EFFECTS: increases the amount of servings by the given amount of servings
     public void changeServings(double servings) {
         this.servings = this.servings + servings;
+    }
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("food name", foodTitle);
+        json.put("servings", servings);
+        return json;
     }
 
 

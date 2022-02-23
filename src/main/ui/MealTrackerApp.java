@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 // Meal Tracker console application
-public class ConsoleInteraction {
+public class MealTrackerApp {
     Scanner sc;
     Logs log;
     String action;
 
     //EFFECTS: Constructs a ConsoleInteraction with a scanner, new Logs and an empty string as the action. Also
     //runs the meal tracker application
-    public ConsoleInteraction() {
+    public MealTrackerApp() {
         sc = new Scanner(System.in);
         log = new Logs();
         action = "";

@@ -1,0 +1,59 @@
+{
+    "week": "Feb 21-27",
+    "logs": [
+        {"Monday": [
+            {"breakfast": []},
+            {"lunch": []},
+            {"dinner": [
+                {
+                    "servings": 1.5,
+                    "food name": "Crab"
+                },
+                {
+                    "servings": 2,
+                    "food name": "rice"
+                }
+            ]},
+            {"snacks": []}
+        ]},
+        {"Tuesday": [
+            {"breakfast": [{
+                "servings": 2,
+                "food name": "bread"
+            }]},
+            {"lunch": []},
+            {"dinner": []},
+            {"snacks": []}
+        ]},
+        {"Wednesday": [
+            {"breakfast": []},
+            {"lunch": []},
+            {"dinner": []},
+            {"snacks": []}
+        ]},
+        {"Thursday": [
+            {"breakfast": []},
+            {"lunch": []},
+            {"dinner": []},
+            {"snacks": []}
+        ]},
+        {"Friday": [
+            {"breakfast": []},
+            {"lunch": []},
+            {"dinner": []},
+            {"snacks": []}
+        ]},
+        {"Saturday": [
+            {"breakfast": []},
+            {"lunch": []},
+            {"dinner": []},
+            {"snacks": []}
+        ]},
+        {"Sunday": [
+            {"breakfast": []},
+            {"lunch": []},
+            {"dinner": []},
+            {"snacks": []}
+        ]}
+    ]
+}
