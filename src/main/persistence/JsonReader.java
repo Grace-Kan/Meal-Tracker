@@ -48,7 +48,7 @@ public class JsonReader {
     }
 
     // MODIFIES: log
-    // EFFECTS: parses meals of the days from JSON Object and add them to corresponding logs
+    // EFFECTS: parses meals of all the days of the week from JSON and add them to corresponding logs
     private void addMealsToDay(MealTracker log, JSONArray jsonObject) {
         JSONObject jsonMon = jsonObject.getJSONObject(0);
         addMeals(log, jsonMon, "Monday");
@@ -96,7 +96,7 @@ public class JsonReader {
     }
 
     // MODIFIES: log
-    // EFFECTS: parses the list of Food Items from JSON object and adds them to the corresponding meal and day
+    // EFFECTS: parses the list of Food Items from JSON and adds them to the corresponding meal and day
     private void addFoods(MealTracker log, JSONArray foods, String mealType, String day) {
         for (Object json : foods) {
             JSONObject nextFood = (JSONObject) json;

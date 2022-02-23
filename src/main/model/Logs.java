@@ -110,12 +110,14 @@ public class Logs {
         return json;
     }
 
+    // EFFECTS: returns log of the given day as a JSON object
     public JSONObject dayToJson(String day) {
         JSONObject json = new JSONObject();
         json.put(day, logToJson(day));
         return json;
     }
 
+    // EFFECTS: returns a JSON array of the meals
     public JSONArray logToJson(String day) {
         JSONArray json = new JSONArray();
         json.put(getMealsByDay(day).mealsToJson("breakfast"));

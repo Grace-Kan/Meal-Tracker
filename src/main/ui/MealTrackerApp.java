@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class MealTrackerApp {
     private static final String FILE_NAME = "./data/mealtracker.json";
     private Scanner sc;
-    private MealTracker log;
+    private MealTracker mt;
     private String action;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
@@ -23,7 +23,7 @@ public class MealTrackerApp {
     //runs the meal tracker application
     public MealTrackerApp() {
         sc = new Scanner(System.in);
-        log = new MealTracker("Feb 21-27");
+        mt = new MealTracker("Feb 21-27");
         action = "";
         jsonWriter = new JsonWriter(FILE_NAME);
         jsonReader = new JsonReader(FILE_NAME);
@@ -74,11 +74,10 @@ public class MealTrackerApp {
             if (!checkValidMeal(logMeal)) {
                 System.out.println("Sorry, I didn't understand that, try again");
             } else {
-                if (log.getLog().getMealsByDay(logDay).getAllMealsByMealTypes(logMeal).size() == 0) {
+                if (mt.getLogsByDayAndMealType(logDay, logMeal).size() == 0) {
                     System.out.println("No food was logged");
                 } else {
-                    System.out.println(
-                            convertToOneString(log.getLog().getMealsByDay(logDay).getAllMealsByMealTypes(logMeal)));
+                    System.out.println(convertToOneString(mt.getLogsByDayAndMealType(logDay, logMeal)));
                 }
             }
         }
@@ -102,7 +101,7 @@ public class MealTrackerApp {
                 String mealTitle = sc.nextLine();
                 System.out.println("Please enter the servings");
                 String mealServings = sc.nextLine();
-                log.getLog().addMealsByDay(mealTime,
+                mt.getLog().addMealsByDay(mealTime,
                         new FoodItem(mealTitle, mealType, Double.parseDouble(mealServings)));
                 System.out.println("Success! Added " + mealTitle);
             }
@@ -125,8 +124,8 @@ public class MealTrackerApp {
             } else {
                 System.out.println("Please indicate the item you wish to delete");
                 String foodToDelete = sc.nextLine();
-                if (log.getLog().mealContains(dayToEdit, mealToEdit, foodToDelete)) {
-                    log.getLog().removeFood(dayToEdit, mealToEdit, foodToDelete);
+                if (mt.getLog().mealContains(dayToEdit, mealToEdit, foodToDelete)) {
+                    mt.getLog().removeFood(dayToEdit, mealToEdit, foodToDelete);
                     System.out.println("Success! " + foodToDelete + " was deleted");
                 } else {
                     System.out.println("Sorry, the food you entered could not be found. Please try again");
@@ -153,8 +152,8 @@ public class MealTrackerApp {
                 String foodToEdit = sc.nextLine();
                 System.out.println("How many servings would you like to add?");
                 String servingsToAdd = sc.nextLine();
-                if (log.getLog().mealContains(dayToEdit, mealToEdit, foodToEdit)) {
-                    log.getLog().getMealsByDay(dayToEdit).addServings(mealToEdit, foodToEdit, servingsToAdd);
+                if (mt.getLog().mealContains(dayToEdit, mealToEdit, foodToEdit)) {
+                    mt.getLog().getMealsByDay(dayToEdit).addServings(mealToEdit, foodToEdit, servingsToAdd);
                     System.out.println("Success! Servings were added");
                 } else {
                     System.out.println("Sorry, the food you entered could not be found. Please try again");
@@ -164,11 +163,11 @@ public class MealTrackerApp {
     }
 
     // MODIFIES: this
-    // EFFECTS:
+    // EFFECTS: converts mt into a JSON representation and adds it to a file with the file name
     private void saveLog() {
         try {
             jsonWriter.open();
-            jsonWriter.write(log);
+            jsonWriter.write(mt);
             jsonWriter.close();
             System.out.println("Log saved to" + FILE_NAME);
         } catch (FileNotFoundException e) {
@@ -176,10 +175,12 @@ public class MealTrackerApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: loads mt from file
     private void loadLog() {
         try {
-            log = jsonReader.read();
-            System.out.println("Loaded " + log.getWeek());
+            mt = jsonReader.read();
+            System.out.println("Loaded " + mt.getWeek());
         } catch (IOException e) {
             System.out.println("The file you wish to load does not exist");
         }

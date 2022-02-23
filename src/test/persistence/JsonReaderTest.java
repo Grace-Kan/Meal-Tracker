@@ -14,6 +14,7 @@ public class JsonReaderTest {
         JsonReader reader = new JsonReader("./data/noFile.json");
         try {
             MealTracker mt = reader.read();
+            fail("IOException expected");
         } catch (IOException e) {
             //pass
         }

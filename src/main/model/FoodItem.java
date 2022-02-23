@@ -24,6 +24,7 @@ public class FoodItem {
         this.servings = this.servings + servings;
     }
 
+    //EFFECTS: returns this as a JSON object
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("food name", foodTitle);

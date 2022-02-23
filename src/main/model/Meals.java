@@ -62,6 +62,7 @@ public class Meals {
         }
     }
 
+    // EFFECTS: returns meal as a JSON object
     public JSONObject mealsToJson(String mealType) {
         JSONObject json = new JSONObject();
         json.put(mealType, mealToJson(mealType));
@@ -69,6 +70,7 @@ public class Meals {
         return json;
     }
 
+    // EFFECTS: returns the food items in meal as a JSON array
     public JSONArray mealToJson(String meal) {
         JSONArray jsonArray = new JSONArray();
 

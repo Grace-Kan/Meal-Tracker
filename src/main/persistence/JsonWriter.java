@@ -10,7 +10,7 @@ public class JsonWriter {
     private PrintWriter writer;
     private String destination;
 
-    // EFFECTS: constructs a writer with destination set to given destination
+    // EFFECTS: constructs a writer that writes to the destination file
     public JsonWriter(String destination) {
         this.destination = destination;
     }
@@ -22,13 +22,13 @@ public class JsonWriter {
     }
 
     // MODIFIES: this
-    // EFFECTS: closes the writer
+    // EFFECTS: closes and stops the writer
     public void close() {
         writer.close();
     }
 
     // MODIFIES: this
-    // EFFECTS: converts Logs to a JSON representation to a file
+    // EFFECTS: converts logs from Meal tracker to a JSON representation to a file
     public void write(MealTracker log) {
         JSONObject json = log.toJson();
         saveToFile(json.toString(4));

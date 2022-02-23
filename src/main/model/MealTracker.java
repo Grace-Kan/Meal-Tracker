@@ -2,6 +2,8 @@ package model;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 //
 public class MealTracker {
     private String week;
@@ -26,6 +28,11 @@ public class MealTracker {
     //EFFECTS: adds given foodItem to logs
     public void addFoodToLogs(String day, FoodItem foodItem) {
         log.addMealsByDay(day, foodItem);
+    }
+
+    // EFFECTS: gets the list of food items by the day and meal type
+    public ArrayList<FoodItem> getLogsByDayAndMealType(String day, String mealType) {
+        return log.getMealsByDay(day).getAllMealsByMealTypes(mealType);
     }
 
     public String getWeek() {
