@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-//
+// represents a Meal Tracker with the corresponding name and logs
 public class MealTracker {
     private String week;
     private Logs log;

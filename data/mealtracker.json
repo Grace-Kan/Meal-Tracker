@@ -1,15 +1,12 @@
 {
-    "week": "Feb 21-27",
+    "week": "March 7-13",
     "logs": [
         {"Monday": [
             {"breakfast": [{
-                "servings": 2,
-                "food name": "food"
-            }]},
-            {"lunch": [{
                 "servings": 1,
-                "food name": "bread"
+                "food name": "butter"
             }]},
+            {"lunch": []},
             {"dinner": []},
             {"snacks": []}
         ]},

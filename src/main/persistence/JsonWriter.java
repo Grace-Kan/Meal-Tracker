@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import java.io.*;
 
 // Represents a writer that writes Logs to file in JSOn representation. Referenced from JsonSerializationDemo
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 public class JsonWriter {
     private PrintWriter writer;
     private String destination;

@@ -23,12 +23,14 @@ public class MealTrackerApp {
     //runs the meal tracker application
     public MealTrackerApp() {
         sc = new Scanner(System.in);
-        mt = new MealTracker("Feb 21-27");
+        mt = new MealTracker("March 7-13");
         action = "";
         jsonWriter = new JsonWriter(FILE_NAME);
         jsonReader = new JsonReader(FILE_NAME);
         runApplication();
     }
+
+
 
     // MODIFIES: this
     // EFFECTS: processes user command
@@ -164,6 +166,7 @@ public class MealTrackerApp {
 
     // MODIFIES: this
     // EFFECTS: converts mt into a JSON representation and adds it to a file with the file name
+    // referenced from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private void saveLog() {
         try {
             jsonWriter.open();
@@ -177,6 +180,7 @@ public class MealTrackerApp {
 
     // MODIFIES: this
     // EFFECTS: loads mt from file
+    // referenced from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private void loadLog() {
         try {
             mt = jsonReader.read();
