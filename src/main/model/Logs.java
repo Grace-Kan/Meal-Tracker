@@ -68,7 +68,8 @@ public class Logs {
         }
     }
 
-    //REQUIRES: mealType must be "breakfast", "lunch", "dinner", or "snacks"
+    //REQUIRES: mealType must be "breakfast", "lunch", "dinner", or "snacks" and
+    // day must be "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", or "Sunday"
     //EFFECTS: returns true if given mealType of given day
     // contains the food item with title of the given foodItem, false otherwise
     public Boolean mealContains(String day, String mealType, String foodItem) {
@@ -110,6 +111,7 @@ public class Logs {
         return json;
     }
 
+    // REQUIRES: day must be of "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", or "Sunday"
     // EFFECTS: returns log of the given day as a JSON object
     public JSONObject dayToJson(String day) {
         JSONObject json = new JSONObject();
@@ -117,6 +119,7 @@ public class Logs {
         return json;
     }
 
+    // REQUIRES: day must be of "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", or "Sunday"
     // EFFECTS: returns a JSON array of the meals
     public JSONArray logToJson(String day) {
         JSONArray json = new JSONArray();

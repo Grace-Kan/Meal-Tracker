@@ -30,31 +30,41 @@ public class MealTrackerApp {
         runApplication();
     }
 
+    //EFFECTS: displays the menu options to user
+    private void displayMenu() {
+        System.out.println("What would you like to do? Please choose between:");
+        System.out.println("a -> add food");
+        System.out.println("d -> delete food");
+        System.out.println("v -> view meal");
+        System.out.println("e -> edit servings");
+        System.out.println("s -> save log");
+        System.out.println("l -> load previous log");
+        System.out.println("x -> exit");
+    }
 
 
     // MODIFIES: this
     // EFFECTS: processes user command
-    // referenced from SimpleCalculatorStarterLecLab
+    // referenced from https://github.students.cs.ubc.ca/CPSC210/B04-SimpleCalculatorStarterLecLab
     public void runApplication() {
         System.out.println("Welcome to Meal Tracker!");
-        while (!action.equals("exit")) {
-            System.out.println("What would you like to do? (Choose between: add food, delete food, view meal,"
-                    + " edit servings, save log, load previous log, or exit)");
+        while (!action.equals("x")) {
+            displayMenu();
             action = sc.nextLine();
 
-            if (action.equals("add food")) {
+            if (action.equals("a")) {
                 addFood();
-            } else if (action.equals("view meal")) {
+            } else if (action.equals("v")) {
                 viewMeals();
-            } else if (action.equals("delete food")) {
+            } else if (action.equals("d")) {
                 deleteFood();
-            } else if (action.equals("edit servings")) {
+            } else if (action.equals("e")) {
                 editServings();
-            } else if (action.equals("save log")) {
+            } else if (action.equals("s")) {
                 saveLog();
-            } else if (action.equals("load previous log")) {
+            } else if (action.equals("l")) {
                 loadLog();
-            } else if (action.equals("exit")) {
+            } else if (action.equals("x")) {
                 System.out.println("Bye, thank you for using Meal Tracker!");
             } else {
                 System.out.println("I didn't understand that, try again.");

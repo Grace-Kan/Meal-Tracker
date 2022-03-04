@@ -21,7 +21,7 @@ public class Meals {
         snacks = new ArrayList();
     }
 
-    //REQUIRES: must give in "breakfast", "lunch", "dinner", or "snacks"
+    //REQUIRES: must give as "breakfast", "lunch", "dinner", or "snacks"
     //EFFECTS: returns the list of food items corresponding to the given meal type
     public ArrayList<FoodItem> getAllMealsByMealTypes(String mealType) {
         if (mealType.equals("breakfast")) {
@@ -62,6 +62,7 @@ public class Meals {
         }
     }
 
+    // REQUIRES: mealType must be "breakfast", "lunch", "dinner", or "snacks"
     // EFFECTS: returns meal as a JSON object
     public JSONObject mealsToJson(String mealType) {
         JSONObject json = new JSONObject();
@@ -70,11 +71,12 @@ public class Meals {
         return json;
     }
 
+    // REQUIRES: mealType must be "breakfast", "lunch", "dinner", or "snacks"
     // EFFECTS: returns the food items in meal as a JSON array
-    public JSONArray mealToJson(String meal) {
+    public JSONArray mealToJson(String mealType) {
         JSONArray jsonArray = new JSONArray();
 
-        for (FoodItem fi : getAllMealsByMealTypes(meal)) {
+        for (FoodItem fi : getAllMealsByMealTypes(mealType)) {
             jsonArray.put(fi.toJson());
         }
         return jsonArray;

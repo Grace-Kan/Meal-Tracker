@@ -21,6 +21,7 @@ public class JsonReader {
         this.source = source;
     }
 
+    //EFFECTS: reads File and returns source file as a MealTracker and throws IOException if file cannot be found
     public MealTracker read() throws IOException {
         String data = readFile(source);
         JSONObject jsonObject = new JSONObject(data);
@@ -73,7 +74,7 @@ public class JsonReader {
         addMeals(log, jsonSun, "Sunday");
     }
 
-
+    //REQUIRES: day must be either "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" or "Sunday"
     // MODIFIES: log
     // EFFECTS: parses the meals from JSON object and adds them to the corresponding meals
     private void addMeals(MealTracker log, JSONObject jsonObject, String day) {
@@ -96,6 +97,8 @@ public class JsonReader {
         addFoods(log, jsonSnacks, "snacks", day);
     }
 
+    //REQUIRES: day must be either "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" or "Sunday"
+    // and mealType must be given as "breakfast", "lunch", "dinner", or "snacks"
     // MODIFIES: log
     // EFFECTS: parses the list of Food Items from JSON and adds them to the corresponding meal and day
     private void addFoods(MealTracker log, JSONArray foods, String mealType, String day) {
@@ -105,6 +108,8 @@ public class JsonReader {
         }
     }
 
+    // REQUIRES: day must be either "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" or "Sunday"
+    // and mealType must be given as "breakfast", "lunch", "dinner", or "snacks"
     // MODIFIES: log
     // EFFECTS: parses the food item from JSON object and adds it to the corresponding meal and day
     private void addFood(MealTracker log, JSONObject jsonFood, String mealType, String day) {

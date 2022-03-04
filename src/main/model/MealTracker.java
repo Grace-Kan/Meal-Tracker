@@ -24,12 +24,15 @@ public class MealTracker {
         return json;
     }
 
+    //REQUIRES: day must be either "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" or "Sunday"
     //MODIFIES: this
-    //EFFECTS: adds given foodItem to logs
+    //EFFECTS: adds given foodItem to logs of given day
     public void addFoodToLogs(String day, FoodItem foodItem) {
         log.addMealsByDay(day, foodItem);
     }
 
+    //REQUIRES: day must be either "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" or "Sunday"
+    // and mealType must be "breakfast", "lunch", "dinner", or "snacks"
     // EFFECTS: gets the list of food items by the day and meal type
     public ArrayList<FoodItem> getLogsByDayAndMealType(String day, String mealType) {
         return log.getMealsByDay(day).getAllMealsByMealTypes(mealType);
