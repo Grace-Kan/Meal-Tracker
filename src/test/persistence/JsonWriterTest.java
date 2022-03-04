@@ -9,6 +9,7 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 //Unit test for JsonWriter class. Referenced from JsonSerializationDemo
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 public class JsonWriterTest {
 
     @Test
