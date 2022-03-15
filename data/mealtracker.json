@@ -4,21 +4,27 @@
         {"Monday": [
             {"breakfast": [{
                 "servings": 1,
-                "food name": "food"
+                "food name": "bread"
             }]},
             {"lunch": []},
             {"dinner": []},
             {"snacks": []}
         ]},
         {"Tuesday": [
-            {"breakfast": []},
+            {"breakfast": [{
+                "servings": 2,
+                "food name": "egg"
+            }]},
             {"lunch": []},
             {"dinner": []},
             {"snacks": []}
         ]},
         {"Wednesday": [
             {"breakfast": []},
-            {"lunch": []},
+            {"lunch": [{
+                "servings": 2,
+                "food name": "pizza"
+            }]},
             {"dinner": []},
             {"snacks": []}
         ]},
