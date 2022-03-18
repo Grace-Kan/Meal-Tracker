@@ -3,15 +3,24 @@ package ui;
 import com.sun.xml.internal.bind.v2.runtime.output.StAXExStreamWriterOutput;
 import model.FoodItem;
 import model.MealTracker;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 import ui.tools.AddMealTool;
+import ui.tools.ViewMealTool;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class MealTrackerUI implements ActionListener {
+    private static final String FILE_NAME = "./data/mealtracker.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
     private MealTracker mt;
+
     private JFrame frame;
     private JPanel panel;
     private JButton addMeal;
@@ -27,6 +36,8 @@ public class MealTrackerUI implements ActionListener {
 
     public MealTrackerUI() {
         mt = new MealTracker("My Meal Tracker");
+        jsonWriter = new JsonWriter(FILE_NAME);
+        jsonReader = new JsonReader(FILE_NAME);
         frame = new JFrame();
         panel = new JPanel();
         initializeButtons();
@@ -72,9 +83,27 @@ public class MealTrackerUI implements ActionListener {
         frame.setVisible(true);
     }
 
+    private void saveLog() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(mt);
+            jsonWriter.close();
+            System.out.println("Log saved to" + FILE_NAME);
+        } catch (FileNotFoundException e) {
+            System.out.println("The file you wish to save to does not exist");
+        }
+    }
 
-    public static void main(String[] args) {
-        new MealTrackerUI();
+    // MODIFIES: this
+    // EFFECTS: loads mt from file
+    // referenced from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    private void loadLog() {
+        try {
+            mt = jsonReader.read();
+            System.out.println("Loaded " + mt.getWeek());
+        } catch (IOException e) {
+            System.out.println("The file you wish to load does not exist");
+        }
     }
 
     @Override
@@ -84,18 +113,21 @@ public class MealTrackerUI implements ActionListener {
         } else if (e.getSource() == deleteMeal) {
             //TODO
         } else if (e.getSource() == viewMeal) {
-            //TODO
+            new ViewMealTool(mt);
             System.out.println(mt.getLog().logsToJson());
         } else if (e.getSource() == editServings) {
             //TODO
         } else if (e.getSource() == save) {
-            //TODO
+            saveLog();
         } else if (e.getSource() == load) {
-            //TODO
+            loadLog();
         }
     }
 
-    public MealTracker getMt() {
-        return mt;
+
+    public static void main(String[] args) {
+        new MealTrackerUI();
     }
+
+
 }

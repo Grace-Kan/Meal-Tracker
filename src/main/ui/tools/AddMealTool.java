@@ -21,6 +21,7 @@ public class AddMealTool extends ToolMenu {
         super();
         this.mt = mt;
         actionPanel.add(submit);
+        frame.add(actionPanel, BorderLayout.SOUTH);
     }
 
     @Override
@@ -36,12 +37,6 @@ public class AddMealTool extends ToolMenu {
         actionPanel.add(label2);
         actionPanel.add(servings);
 
-    }
-
-    @Override
-    protected void constructFrame() {
-        super.constructFrame();
-        frame.add(actionPanel, BorderLayout.SOUTH);
     }
 
     @Override
