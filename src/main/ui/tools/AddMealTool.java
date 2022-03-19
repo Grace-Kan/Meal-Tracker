@@ -46,7 +46,7 @@ public class AddMealTool extends ToolMenu {
             mealType = mealGroup.getSelection().getActionCommand();
             String name = foodName.getText();
             try {
-                int serv = Integer.parseInt(servings.getText());
+                double serv = Double.parseDouble(servings.getText());
                 foodItem = new FoodItem(name, mealType, serv);
                 mt.addFoodToLogs(day, foodItem);
                 frame.dispose();

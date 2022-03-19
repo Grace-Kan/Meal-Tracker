@@ -83,6 +83,7 @@ public class MealTrackerUI implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        frame.setSize(500, 400);
     }
 
     private void saveLog() {
@@ -117,7 +118,7 @@ public class MealTrackerUI implements ActionListener {
         } else if (e.getSource() == viewMeal) {
             new ViewMealTool(mt);
         } else if (e.getSource() == editServings) {
-            //new EditServingsTool();
+            new EditServingsTool(mt);
         } else if (e.getSource() == save) {
             saveLog();
         } else if (e.getSource() == load) {

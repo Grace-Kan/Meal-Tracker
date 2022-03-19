@@ -24,7 +24,7 @@ public class DeleteFoodTool extends ToolMenu {
             frame.dispose();
             day = dayGroup.getSelection().getActionCommand();
             mealType = mealGroup.getSelection().getActionCommand();
-            new SelectFoodTool(mt, day, mealType);
+            new DeleteEditor(mt, day, mealType, "delete");
         }
     }
 }

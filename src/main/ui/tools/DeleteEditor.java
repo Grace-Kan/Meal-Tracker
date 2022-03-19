@@ -10,20 +10,20 @@ import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
 
-public class SelectFoodTool implements ActionListener {
-    private MealTracker mt;
-    private String day;
-    private String mealType;
-    private JFrame frame;
-    private JPanel panel;
-    private JPanel deletePanel;
-    private JButton delete;
-    private List<JRadioButton> foods;
+public class DeleteEditor implements ActionListener {
+    protected MealTracker mt;
+    protected String day;
+    protected String mealType;
+    protected JFrame frame;
+    protected JPanel panel;
+    protected JPanel actionPanel;
+    protected JButton button;
+    protected List<JRadioButton> foods;
 
-    private static ButtonGroup foodGroup = new ButtonGroup();
-    private static int ROWS = 5;
+    protected static ButtonGroup foodGroup = new ButtonGroup();
+    protected static int ROWS = 5;
 
-    public SelectFoodTool(MealTracker mt, String day, String mealType) {
+    public DeleteEditor(MealTracker mt, String day, String mealType, String buttonTitle) {
         this.mt = mt;
         this.day = day;
         this.mealType = mealType;
@@ -31,27 +31,27 @@ public class SelectFoodTool implements ActionListener {
         initializeRadioButtons(mt, day, mealType);
         initializePanel();
         initializeFrame();
-        delete = new JButton("delete");
-        delete.addActionListener(this);
-        JPanel deletePanel = new JPanel();
-        deletePanel.add(delete);
-        frame.add(deletePanel, BorderLayout.SOUTH);
+        button = new JButton(buttonTitle);
+        button.addActionListener(this);
+        actionPanel = new JPanel();
+        actionPanel.add(button);
+        frame.add(actionPanel, BorderLayout.SOUTH);
 
     }
 
-    private void addJRadioButtons() {
+    protected void addJRadioButtons() {
         for (JRadioButton rb : foods) {
             panel.add(rb);
         }
     }
 
-    private void addJRadioButtonsToGroup() {
+    protected void addJRadioButtonsToGroup() {
         for (JRadioButton rb : foods) {
             foodGroup.add(rb);
         }
     }
 
-    private void setActionCommandFoods(List<FoodItem> foodItems) {
+    protected void setActionCommandFoods(List<FoodItem> foodItems) {
         int i = 0;
         for (JRadioButton rb : foods) {
             rb.setActionCommand(foodItems.get(i).getFoodTitle());
@@ -59,7 +59,7 @@ public class SelectFoodTool implements ActionListener {
         }
     }
 
-    private void initializeRadioButtons(MealTracker mt, String day, String mealType) {
+    protected void initializeRadioButtons(MealTracker mt, String day, String mealType) {
         List<FoodItem> foodItems = mt.getLogsByDayAndMealType(day, mealType);
         for (FoodItem f : foodItems) {
             String buttonTitle = f.getFoodTitle() + "  (" + Double.toString(f.getServings()) + " servings" + ")";
@@ -69,20 +69,21 @@ public class SelectFoodTool implements ActionListener {
         setActionCommandFoods(foodItems);
     }
 
-    private void initializePanel() {
+    protected void initializePanel() {
         panel = new JPanel();
-        panel.setBorder(BorderFactory.createEmptyBorder(30,30,10,10));
+        panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 10));
         panel.setLayout(new GridLayout(ROWS, foods.size() / ROWS));
         addJRadioButtons();
     }
 
-    private void initializeFrame() {
+    protected void initializeFrame() {
         frame = new JFrame();
         frame.setPreferredSize(new Dimension(600, 450));
-        frame.add(panel, BorderLayout.CENTER);
+        frame.add(panel, BorderLayout.NORTH);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        frame.setTitle("Please select a day and meal to edit");
 
     }
 
