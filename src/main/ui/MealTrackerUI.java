@@ -6,6 +6,8 @@ import model.MealTracker;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 import ui.tools.AddMealTool;
+import ui.tools.DeleteFoodTool;
+import ui.tools.EditServingsTool;
 import ui.tools.ViewMealTool;
 
 import javax.swing.*;
@@ -111,12 +113,11 @@ public class MealTrackerUI implements ActionListener {
         if (e.getSource() == addMeal) {
             new AddMealTool(mt);
         } else if (e.getSource() == deleteMeal) {
-            //TODO
+            new DeleteFoodTool(mt);
         } else if (e.getSource() == viewMeal) {
             new ViewMealTool(mt);
-            System.out.println(mt.getLog().logsToJson());
         } else if (e.getSource() == editServings) {
-            //TODO
+            //new EditServingsTool();
         } else if (e.getSource() == save) {
             saveLog();
         } else if (e.getSource() == load) {

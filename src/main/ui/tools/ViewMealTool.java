@@ -34,7 +34,7 @@ public class ViewMealTool extends ToolMenu {
             p.setLayout(new GridLayout(10, log.size() / 10));
             f.add(p, BorderLayout.CENTER);
             frame.setPreferredSize(new Dimension(600, 450));
-            f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             f.pack();
             f.setVisible(true);
 

@@ -99,7 +99,7 @@ public abstract class ToolMenu implements ActionListener {
         frame.setPreferredSize(new Dimension(600, 450));
         frame.add(dayPanel, BorderLayout.NORTH);
         frame.add(mealPanel,BorderLayout.CENTER);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
