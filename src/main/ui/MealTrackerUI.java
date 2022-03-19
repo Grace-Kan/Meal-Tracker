@@ -1,7 +1,5 @@
 package ui;
 
-import com.sun.xml.internal.bind.v2.runtime.output.StAXExStreamWriterOutput;
-import model.FoodItem;
 import model.MealTracker;
 import persistence.JsonReader;
 import persistence.JsonWriter;

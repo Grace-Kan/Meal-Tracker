@@ -62,7 +62,7 @@ public class AddMealTool extends ToolMenu {
     private void setPopupImage() {
         JFrame f = new JFrame();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        ImageIcon image = new ImageIcon("./data/IMG_0130.jpg");
+        ImageIcon image = new ImageIcon("./src/IMG_0130.jpg");
         JLabel lbl = new JLabel(image);
         f.getContentPane().add(lbl);
         f.setSize(image.getIconWidth(), image.getIconHeight());
