@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
+//represents an add meal tool menu
 public class AddMealTool extends ToolMenu {
     private JTextField foodName;
     private JTextField servings;
@@ -17,6 +18,8 @@ public class AddMealTool extends ToolMenu {
     private FoodItem foodItem;
     private MealTracker mt;
 
+
+    //EFFECTS: constructs an add meal menu
     public AddMealTool(MealTracker mt) {
         super();
         this.mt = mt;
@@ -24,6 +27,8 @@ public class AddMealTool extends ToolMenu {
         frame.add(actionPanel, BorderLayout.SOUTH);
     }
 
+    //MODIFIES: this
+    //EFFECTS: constructs the bottom panel that contains the text fields that allow users to enter food name & servings
     @Override
     protected void constructActionPanel() {
         super.constructActionPanel();
@@ -39,6 +44,8 @@ public class AddMealTool extends ToolMenu {
 
     }
 
+    //EFFECTS: adds a food item with the entered food name, servings and meal type to mt. Displays a popup message
+    // if incorrect value type was entered for servings.
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getActionCommand().equals("submit")) {
@@ -53,12 +60,14 @@ public class AddMealTool extends ToolMenu {
                 setPopupImage();
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(frame, "Illegal value type was entered");
-
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(frame, "Please select and enter all required fields");
             }
         }
     }
 
     // taken from https://stackoverflow.com/questions/29636217/how-to-have-an-image-pop-up-in-java
+    // EFFECTS: sets up and displays the pop up image for when a food item was added.
     private void setPopupImage() {
         JFrame f = new JFrame();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

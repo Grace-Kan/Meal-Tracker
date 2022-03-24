@@ -8,11 +8,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
+//represents the view meal tool panel
 public class ViewMealTool extends ToolMenu {
     private MealTracker mt;
     private String day;
     private String mealType;
 
+    //EFFECTS: constructs a menu that allows users to see the food items logged to selected day and meal type
     public ViewMealTool(MealTracker mt) {
         super();
         this.mt = mt;
@@ -21,12 +23,14 @@ public class ViewMealTool extends ToolMenu {
         frame.setTitle("Choose day and meal type to view");
     }
 
+    //MODIFIES: this
+    //EFFECTS: displays frame that lists out the food items logged
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getActionCommand().equals("submit")) {
             day = dayGroup.getSelection().getActionCommand();
             mealType = mealGroup.getSelection().getActionCommand();
-            ArrayList<FoodItem> log = mt.getLogsByDayAndMealType(day,mealType);
+            ArrayList<FoodItem> log = mt.getLogsByDayAndMealType(day, mealType);
             JFrame f = new JFrame();
             JPanel p = new JPanel();
             setViewMeal(p, log);
@@ -37,12 +41,10 @@ public class ViewMealTool extends ToolMenu {
             f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             f.pack();
             f.setVisible(true);
-
-
-
         }
     }
 
+    //EFFECTS: returns the food item in a string that shows the food name and servings
     private String convertMealToString(FoodItem f) {
         String s;
         s = "Food Name: " + f.getFoodTitle() + System.lineSeparator() + ", " + "Servings: "
@@ -50,6 +52,8 @@ public class ViewMealTool extends ToolMenu {
         return s;
     }
 
+    //MODIFIES: this
+    //EFFECTS: sets the panel that displays the food items
     private void setViewMeal(JPanel panel, ArrayList<FoodItem> foodItems) {
         for (FoodItem f : foodItems) {
             JLabel label = new JLabel(convertMealToString(f));

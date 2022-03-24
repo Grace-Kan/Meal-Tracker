@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//represents the default tool menu frame and panel
 public abstract class ToolMenu implements ActionListener {
     protected JRadioButton mon;
     protected JRadioButton tues;
@@ -31,6 +32,7 @@ public abstract class ToolMenu implements ActionListener {
     protected static ButtonGroup dayGroup = new ButtonGroup();
     protected static ButtonGroup mealGroup = new ButtonGroup();
 
+    //EFFECTS: constructs a menu frame with day and meal type options
     public ToolMenu() {
         initializeDays();
         initializeMeals();
@@ -47,6 +49,7 @@ public abstract class ToolMenu implements ActionListener {
         submit.addActionListener(this);
     }
 
+    //EFFECTS: initializes the radio buttons for the days
     protected void initializeDays() {
         mon = new JRadioButton("Monday");
         tues = new JRadioButton("Tuesday");
@@ -57,6 +60,7 @@ public abstract class ToolMenu implements ActionListener {
         sun = new JRadioButton("Sunday");
     }
 
+    //EFFECTS: initializes the radio buttons for the meal types
     protected void initializeMeals() {
         breakfast = new JRadioButton("breakfast");
         lunch = new JRadioButton("lunch");
@@ -64,6 +68,8 @@ public abstract class ToolMenu implements ActionListener {
         snacks = new JRadioButton("snacks");
     }
 
+    //MODIFIES: this
+    //EFFECTS: adds the day radio buttons to the dayPanel
     protected void constructDayPanel() {
         dayPanel = new JPanel();
         dayPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 10));
@@ -77,6 +83,8 @@ public abstract class ToolMenu implements ActionListener {
         dayPanel.add(thurs);
     }
 
+    //MODIFIES: this
+    //EFFECTS: adds the meal type radio buttons to the mealPanel
     protected void constructMealPanel() {
         mealPanel = new JPanel();
         mealPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 10));
@@ -88,12 +96,15 @@ public abstract class ToolMenu implements ActionListener {
 
     }
 
+    //EFFECTS: constructs an action panel
     protected void constructActionPanel() {
         actionPanel = new JPanel();
         mealPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 10));
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: constructs the main frame and sets it up
     protected void constructFrame() {
         frame = new JFrame();
         frame.setPreferredSize(new Dimension(600, 450));
@@ -104,6 +115,8 @@ public abstract class ToolMenu implements ActionListener {
         frame.setVisible(true);
     }
 
+    //MODIFIES: this
+    //EFFECTS: sets up the action commands for each of the day radio buttons
     protected void setActionCommandDays() {
         mon.setActionCommand("Monday");
         tues.setActionCommand("Tuesday");
@@ -114,6 +127,8 @@ public abstract class ToolMenu implements ActionListener {
         sun.setActionCommand("Sunday");
     }
 
+    //MODIFIES: this
+    //EFFECTS: sets up the action commands for each of the meal type radio buttons
     protected void setActionCommandMeals() {
         breakfast.setActionCommand("breakfast");
         lunch.setActionCommand("lunch");
@@ -121,6 +136,8 @@ public abstract class ToolMenu implements ActionListener {
         snacks.setActionCommand("snacks");
     }
 
+    //MODIFIES: this
+    //EFFECTS: adds the day radio buttons to the dayGroup
     protected void groupDays() {
         dayGroup.add(mon);
         dayGroup.add(tues);
@@ -131,6 +148,8 @@ public abstract class ToolMenu implements ActionListener {
         dayGroup.add(sun);
     }
 
+    //MODIFIES: this
+    //EFFECTS: adds the meal type radio buttons to the mealGroup
     protected void groupMeals() {
         mealGroup.add(breakfast);
         mealGroup.add(lunch);
@@ -138,6 +157,8 @@ public abstract class ToolMenu implements ActionListener {
         mealGroup.add(snacks);
     }
 
+    //MODIFIES: this
+    //EFFECTS: assigns the selected day and meal type to day and mealType
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("submit")) {
             day = dayGroup.getSelection().getActionCommand();

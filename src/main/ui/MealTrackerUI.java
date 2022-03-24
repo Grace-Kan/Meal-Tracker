@@ -3,10 +3,7 @@ package ui;
 import model.MealTracker;
 import persistence.JsonReader;
 import persistence.JsonWriter;
-import ui.tools.AddMealTool;
-import ui.tools.DeleteFoodTool;
-import ui.tools.EditServingsTool;
-import ui.tools.ViewMealTool;
+import ui.tools.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+//represents a meal tracker GUI
 public class MealTrackerUI implements ActionListener {
     private static final String FILE_NAME = "./data/mealtracker.json";
     private JsonWriter jsonWriter;
@@ -29,11 +27,11 @@ public class MealTrackerUI implements ActionListener {
     private JButton editServings;
     private JButton save;
     private JButton load;
-
-    private AddMealTool addMealTool;
-
+    private JButton viewAllMeals;
 
 
+
+    //EFFECTS: constructs a meal tracker up UI
     public MealTrackerUI() {
         mt = new MealTracker("My Meal Tracker");
         jsonWriter = new JsonWriter(FILE_NAME);
@@ -44,30 +42,37 @@ public class MealTrackerUI implements ActionListener {
         setPanel();
         setFrame();
 
-        addMeal.addActionListener(this); //change addMealTool to this
+        addMeal.addActionListener(this);
         deleteMeal.addActionListener(this);
         viewMeal.addActionListener(this);
         editServings.addActionListener(this);
         save.addActionListener(this);
         load.addActionListener(this);
+        viewAllMeals.addActionListener(this);
 
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: initializes the menu buttons
     private void initializeButtons() {
         addMeal = new JButton("Add Meal");
         deleteMeal = new JButton("Delete Meal");
-        viewMeal = new JButton("View Meals");
+        viewMeal = new JButton("View Meals By Day and Meal Type");
         editServings = new JButton("Edit Servings");
         save = new JButton("Save Log");
         load = new JButton("Load Previous Log");
+        viewAllMeals = new JButton("View All Meals");
     }
 
+    //MODIFIES: this
+    //EFFECTS: sets up menu panels and adds the menu buttons to the panel
     private void setPanel() {
         panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 10));
-        panel.setLayout(new GridLayout(3,2));
+        panel.setLayout(new GridLayout(4,2));
         panel.add(addMeal);
         panel.add(deleteMeal);
+        panel.add(viewAllMeals);
         panel.add(viewMeal);
         panel.add(editServings);
         panel.add(save);
@@ -75,6 +80,8 @@ public class MealTrackerUI implements ActionListener {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: sets up the starting menu frame
     private void setFrame() {
         frame.setTitle("My Meal Tracker");
         frame.add(panel, BorderLayout.CENTER);
@@ -84,6 +91,9 @@ public class MealTrackerUI implements ActionListener {
         frame.setSize(500, 400);
     }
 
+    // MODIFIES: this
+    // EFFECTS: converts mt into a JSON representation and adds it to a file with the file name
+    // referenced from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private void saveLog() {
         try {
             jsonWriter.open();
@@ -107,6 +117,8 @@ public class MealTrackerUI implements ActionListener {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: takes event input and display next panel corresponding to the button
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addMeal) {
@@ -121,10 +133,14 @@ public class MealTrackerUI implements ActionListener {
             saveLog();
         } else if (e.getSource() == load) {
             loadLog();
+        } else if (e.getSource() == viewAllMeals) {
+            new ViewAllMeals(mt);
         }
     }
 
 
+    //MODIFIES: this
+    //EFFECTS: runs the meal tracker application
     public static void main(String[] args) {
         new MealTrackerUI();
     }
