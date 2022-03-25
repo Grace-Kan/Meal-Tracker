@@ -56,7 +56,6 @@ public class AddMealTool extends ToolMenu {
                 double serv = Double.parseDouble(servings.getText());
                 foodItem = new FoodItem(name, mealType, serv);
                 mt.addFoodToLogs(day, foodItem);
-                frame.dispose();
                 new PopupImage("./src/IMG_0130.jpg");
             } catch (NullPointerException e) {
                 JOptionPane.showMessageDialog(frame, "Please select and enter all required fields");
