@@ -29,8 +29,8 @@ public abstract class ToolMenu implements ActionListener {
     protected String day;
     protected String mealType;
 
-    protected static ButtonGroup dayGroup = new ButtonGroup();
-    protected static ButtonGroup mealGroup = new ButtonGroup();
+    protected  ButtonGroup dayGroup = new ButtonGroup();
+    protected  ButtonGroup mealGroup = new ButtonGroup();
 
     //EFFECTS: constructs a menu frame with day and meal type options
     public ToolMenu() {

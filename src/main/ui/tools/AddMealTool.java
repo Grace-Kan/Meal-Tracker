@@ -45,7 +45,7 @@ public class AddMealTool extends ToolMenu {
     }
 
     //EFFECTS: adds a food item with the entered food name, servings and meal type to mt. Displays a popup message
-    // if incorrect value type was entered for servings.
+    // if incorrect value type was entered for servings or if required fields were not selected.
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getActionCommand().equals("submit")) {
@@ -61,7 +61,7 @@ public class AddMealTool extends ToolMenu {
             } catch (NullPointerException e) {
                 JOptionPane.showMessageDialog(frame, "Please select and enter all required fields");
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(frame, "Illegal value type was entered");
+                JOptionPane.showMessageDialog(frame, "Please enter a correct value");
             }
         }
     }

@@ -24,6 +24,7 @@ of yourself can benefit many people and help them achieve a healthier lifestyle.
 ## User Stories
 
 - As a user I want to be able to add a food item (with how many servings) to a meal of a certain day
+- As a user I want to be able to view the food items on for all meals of the week 
 - As a user I want to be able to view what I had for a meal on a certain day
 - As a user I want to be able to delete a food item from a meal 
 - As a user I want to be able to change the servings I had of a food

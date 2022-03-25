@@ -10,7 +10,7 @@ public class PopupImage {
     private ImageIcon image;
 
     // taken from https://stackoverflow.com/questions/29636217/how-to-have-an-image-pop-up-in-java
-    // EFFECTS: sets up and displays the pop up image for when a food item was added.
+    // EFFECTS: sets up and displays a popup image
     public PopupImage(String fileName) {
         frame = new JFrame();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

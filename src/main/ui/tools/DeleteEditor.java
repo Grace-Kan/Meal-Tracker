@@ -19,7 +19,7 @@ public class DeleteEditor extends Editor {
 
     }
 
-    //EFFECTS: removes the chosen food item from mt
+    //EFFECTS: removes the chosen food item from mt and displays error message if no food was selected.
     @Override
     public void actionPerformed(ActionEvent e) {
         try {

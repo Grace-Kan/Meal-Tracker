@@ -19,21 +19,27 @@ public class EditServingsTool extends ToolMenu {
         actionPanel.add(submit);
         frame.add(actionPanel, BorderLayout.SOUTH);
         frame.setTitle("Please choose a day and meal type");
+        groupDays();
     }
 
+
     // EFFECTS: displays a new frame that allows user to select a food and edit its servings if submit button is pressed
+    // and displays error message if required fields were not selected or if no food was logged for selected meal
     @Override
     public void actionPerformed(ActionEvent ae) {
-        try {
-            if (ae.getActionCommand().equals("submit")) {
-                frame.dispose();
+        if (ae.getActionCommand().equals("submit")) {
+            try {
                 day = dayGroup.getSelection().getActionCommand();
                 mealType = mealGroup.getSelection().getActionCommand();
-                new ServingsEditor(mt, day, mealType, "Edit Servings");
+                if (mt.getLogsByDayAndMealType(day, mealType).size() == 0) {
+                    JOptionPane.showMessageDialog(frame, "No food was logged");
+                } else {
+                    new ServingsEditor(mt, day, mealType, "Edit Servings");
+                    frame.dispose();
+                }
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(frame, "Please select and enter in all required fields");
             }
-        } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(frame, "Please select and enter in all required fields");
-
         }
     }
 }

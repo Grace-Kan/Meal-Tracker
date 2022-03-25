@@ -24,23 +24,28 @@ public class ViewMealTool extends ToolMenu {
     }
 
     //MODIFIES: this
-    //EFFECTS: displays frame that lists out the food items logged
+    //EFFECTS: displays frame that lists out the food items logged. Displays error message if not all fields were
+    // selected
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getActionCommand().equals("submit")) {
-            day = dayGroup.getSelection().getActionCommand();
-            mealType = mealGroup.getSelection().getActionCommand();
-            ArrayList<FoodItem> log = mt.getLogsByDayAndMealType(day, mealType);
-            JFrame f = new JFrame();
-            JPanel p = new JPanel();
-            setViewMeal(p, log);
-            p.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 10));
-            p.setLayout(new GridLayout(10, log.size() / 10));
-            f.add(p, BorderLayout.CENTER);
-            frame.setPreferredSize(new Dimension(600, 450));
-            f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            f.pack();
-            f.setVisible(true);
+            try {
+                day = dayGroup.getSelection().getActionCommand();
+                mealType = mealGroup.getSelection().getActionCommand();
+                ArrayList<FoodItem> log = mt.getLogsByDayAndMealType(day, mealType);
+                JFrame f = new JFrame();
+                JPanel p = new JPanel();
+                setViewMeal(p, log);
+                p.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 10));
+                p.setLayout(new GridLayout(10, log.size() / 10));
+                f.add(p, BorderLayout.CENTER);
+                frame.setPreferredSize(new Dimension(600, 450));
+                f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                f.pack();
+                f.setVisible(true);
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(frame, "Please select all required fields");
+            }
         }
     }
 

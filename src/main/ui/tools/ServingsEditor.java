@@ -29,7 +29,8 @@ public class ServingsEditor extends Editor {
     }
 
     //MODIFIES: this
-    //EFFECTS: changes and adds the entered servings amount to the selected food item
+    //EFFECTS: changes and adds the entered servings amount to the selected food item. Displays error message if
+    // wrong value type was entered or if no food was selected.
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Edit Servings")) {

@@ -4,12 +4,12 @@
         {"Monday": [
             {"breakfast": [
                 {
-                    "servings": 1,
-                    "food name": "asian pancake"
+                    "servings": 2,
+                    "food name": "food"
                 },
                 {
-                    "servings": 2,
-                    "food name": "bread"
+                    "servings": 1,
+                    "food name": "hi"
                 }
             ]},
             {"lunch": []},
