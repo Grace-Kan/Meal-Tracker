@@ -1,16 +1,12 @@
 package ui.tools;
 
-import model.FoodItem;
+
 import model.MealTracker;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.LinkedList;
-import java.util.List;
 
-//represents a delete food panel
+//represents a delete food frame
 public class DeleteEditor extends Editor {
 
     //EFFECTS: constructs a menu that allows users to delete a selected food item of selected day and meal type

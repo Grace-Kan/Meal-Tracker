@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
 
-//represents a delete food panel
+//represents an editor frame
 public abstract class Editor implements ActionListener {
     protected MealTracker mt;
     protected String day;
@@ -21,11 +21,11 @@ public abstract class Editor implements ActionListener {
     protected JButton button;
     protected List<JRadioButton> foods;
 
-    protected static ButtonGroup foodGroup = new ButtonGroup();
+    protected ButtonGroup foodGroup = new ButtonGroup();
     protected static int ROWS = 5;
 
 
-    //EFFECTS: constructs a menu that allows users to delete a selected food item of selected day and meal type
+    //EFFECTS: constructs a frame for editing
     public Editor(MealTracker mt, String day, String mealType, String buttonTitle) {
         this.mt = mt;
         this.day = day;
@@ -89,7 +89,7 @@ public abstract class Editor implements ActionListener {
     }
 
     //MODIFIES: this
-    //EFFECTS: constructs a delete food menu frame
+    //EFFECTS: constructs an editor frame
     protected void initializeFrame() {
         frame = new JFrame();
         frame.setPreferredSize(new Dimension(600, 450));

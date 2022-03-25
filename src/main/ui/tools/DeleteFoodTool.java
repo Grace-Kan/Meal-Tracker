@@ -21,8 +21,8 @@ public class DeleteFoodTool extends ToolMenu {
         frame.setTitle("Please choose a day and meal type");
     }
 
-    //EFFECTS: displays a new frame that allows users to select the food to delete when submit button is hit and displays
-    // error message if required fields were not selected or if no food was logged for selected meal
+    //EFFECTS: displays a new frame that allows users to select the food to delete when submit button is hit and
+    // displays error message if required fields were not selected or if no food was logged for selected meal
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getActionCommand().equals("submit")) {
