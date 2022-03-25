@@ -15,10 +15,10 @@ public abstract class ToolMenu implements ActionListener {
     protected JRadioButton sat;
     protected JRadioButton sun;
 
-    private JRadioButton breakfast;
-    private JRadioButton lunch;
-    private JRadioButton dinner;
-    private JRadioButton snacks;
+    protected JRadioButton breakfast;
+    protected JRadioButton lunch;
+    protected JRadioButton dinner;
+    protected JRadioButton snacks;
 
     protected JFrame frame;
     protected JPanel dayPanel;
@@ -157,13 +157,5 @@ public abstract class ToolMenu implements ActionListener {
         mealGroup.add(snacks);
     }
 
-    //MODIFIES: this
-    //EFFECTS: assigns the selected day and meal type to day and mealType
-    public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("submit")) {
-            day = dayGroup.getSelection().getActionCommand();
-            mealType = mealGroup.getSelection().getActionCommand();
-        }
-    }
 
 }

@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 //represents the panel that edits the servings of selected food
-public class ServingsEditor extends DeleteEditor {
+public class ServingsEditor extends Editor {
     private JPanel servingsPanel;
     private JTextField enterServings;
     private JLabel label;
