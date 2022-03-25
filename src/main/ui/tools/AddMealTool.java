@@ -49,42 +49,23 @@ public class AddMealTool extends ToolMenu {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getActionCommand().equals("submit")) {
-            day = dayGroup.getSelection().getActionCommand();
-            mealType = mealGroup.getSelection().getActionCommand();
-            String name = foodName.getText();
             try {
+                String day = dayGroup.getSelection().getActionCommand();
+                String mealType = mealGroup.getSelection().getActionCommand();
+                String name = foodName.getText();
                 double serv = Double.parseDouble(servings.getText());
                 foodItem = new FoodItem(name, mealType, serv);
                 mt.addFoodToLogs(day, foodItem);
                 frame.dispose();
-                setPopupImage();
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(frame, "Illegal value type was entered");
+                new PopupImage("./src/IMG_0130.jpg");
             } catch (NullPointerException e) {
                 JOptionPane.showMessageDialog(frame, "Please select and enter all required fields");
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(frame, "Illegal value type was entered");
             }
         }
     }
 
-    // taken from https://stackoverflow.com/questions/29636217/how-to-have-an-image-pop-up-in-java
-    // EFFECTS: sets up and displays the pop up image for when a food item was added.
-    private void setPopupImage() {
-        JFrame f = new JFrame();
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        ImageIcon image = new ImageIcon("./src/IMG_0130.jpg");
-        JLabel lbl = new JLabel(image);
-        f.getContentPane().add(lbl);
-        f.setSize(image.getIconWidth(), image.getIconHeight());
-
-        int x = (screenSize.width - f.getSize().width) / 2;
-        int y = (screenSize.height - f.getSize().height) / 2;
-
-        f.setLocation(x, y);
-        f.setVisible(true);
-
-        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-    }
 
     public FoodItem getFoodItem() {
         return foodItem;

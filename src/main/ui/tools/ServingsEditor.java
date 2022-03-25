@@ -14,7 +14,7 @@ public class ServingsEditor extends DeleteEditor {
     private JLabel label;
 
 
-    //EFFECTS: constructs a edit serving menu that allows users to select food item and enter a servings amount
+    //EFFECTS: constructs an edit serving menu that allows users to select food item and enter a servings amount
     public ServingsEditor(MealTracker mt, String day, String mealType, String buttonTitle) {
         super(mt, day, mealType, buttonTitle);
         servingsPanel = new JPanel();
@@ -38,33 +38,13 @@ public class ServingsEditor extends DeleteEditor {
                 String serv = enterServings.getText();
                 mt.getLog().getMealsByDay(day).addServings(mealType, foodName, serv);
                 frame.dispose();
-                setPopupImage();
+                new PopupImage("./src/IMG_0134.jpg");
             } catch (NumberFormatException n) {
                 JOptionPane.showMessageDialog(frame, "Please enter a correct value");
             } catch (NullPointerException ne) {
                 JOptionPane.showMessageDialog(frame, "Please select a food");
             }
         }
-    }
-
-    // taken from https://stackoverflow.com/questions/29636217/how-to-have-an-image-pop-up-in-java
-    // EFFECTS: sets up and displays the pop up image for when a food item was added.
-    private void setPopupImage() {
-        JFrame f = new JFrame();
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        ImageIcon image = new ImageIcon("./src/IMG_0134.jpg");
-        JLabel lbl = new JLabel(image);
-        f.getContentPane().add(lbl);
-        f.setSize(image.getIconWidth(), image.getIconHeight());
-
-        int x = (screenSize.width - f.getSize().width) / 2;
-        int y = (screenSize.height - f.getSize().height) / 2;
-
-        f.setLocation(x, y);
-        f.setVisible(true);
-
-        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
     }
 
 }

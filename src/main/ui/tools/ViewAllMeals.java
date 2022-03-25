@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+//represents the tool that allows users to view all meals at a time
 public class ViewAllMeals {
     private MealTracker mt;
     private JFrame frame;
@@ -22,6 +23,7 @@ public class ViewAllMeals {
     private JLabel sun;
 
 
+    //EFFECTS: constructs view all meals frame and panel
     public ViewAllMeals(MealTracker mt) {
         this.mt = mt;
         mon = setText("Monday");
@@ -35,6 +37,8 @@ public class ViewAllMeals {
         initializeFrame();
     }
 
+    //MODIFIES: this
+    //EFFECTS: sets up frame
     private void initializeFrame() {
         frame = new JFrame();
         frame.add(panel, BorderLayout.CENTER);
@@ -69,7 +73,6 @@ public class ViewAllMeals {
     private String setDayText(String day) {
         String s = day + ": " + setTextByMeal(day, "breakfast") + System.lineSeparator()
                 + setTextByMeal(day, "lunch") + System.lineSeparator()
-                + setTextByMeal(day,"dinner") + System.lineSeparator()
                 + setTextByMeal(day,"dinner") + System.lineSeparator()
                 + setTextByMeal(day, "snacks") + System.lineSeparator();
 

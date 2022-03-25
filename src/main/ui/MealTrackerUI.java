@@ -125,6 +125,8 @@ public class MealTrackerUI implements ActionListener {
             new AddMealTool(mt);
         } else if (e.getSource() == deleteMeal) {
             new DeleteFoodTool(mt);
+        } else if (e.getSource() == viewAllMeals) {
+            new ViewAllMeals(mt);
         } else if (e.getSource() == viewMeal) {
             new ViewMealTool(mt);
         } else if (e.getSource() == editServings) {
@@ -133,8 +135,6 @@ public class MealTrackerUI implements ActionListener {
             saveLog();
         } else if (e.getSource() == load) {
             loadLog();
-        } else if (e.getSource() == viewAllMeals) {
-            new ViewAllMeals(mt);
         }
     }
 
