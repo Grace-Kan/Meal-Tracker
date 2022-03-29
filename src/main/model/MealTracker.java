@@ -29,6 +29,9 @@ public class MealTracker {
     //EFFECTS: adds given foodItem to logs of given day
     public void addFoodToLogs(String day, FoodItem foodItem) {
         log.addMealsByDay(day, foodItem);
+        EventLog.getInstance().logEvent(new Event(foodItem.getFoodTitle() + " was added to "
+                + foodItem.getMealType() + " of " + day
+                + "'s log"));
     }
 
     //REQUIRES: day must be either "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" or "Sunday"

@@ -89,6 +89,8 @@ public class Logs {
         for (FoodItem fi : getMealsByDay(day).getAllMealsByMealTypes(mealType)) {
             if (fi.getFoodTitle().equals(foodTitle)) {
                 itemToRemove = fi;
+                EventLog.getInstance().logEvent(new Event(fi.getFoodTitle() + " was removed from "
+                        + fi.getMealType() + " of " + day + "'s log"));
             }
         }
 

@@ -30,3 +30,12 @@ of yourself can benefit many people and help them achieve a healthier lifestyle.
 - As a user I want to be able to change the servings I had of a food
 - As a user I want to be able to save my meals of the week to file
 - As a user I want to be able to load my meals of the week from file
+
+#Phase 4: Task 2
+bread was added to breakfast of Monday's log
+
+Egg sandwich was added to lunch of Monday's log
+
+steak was added to dinner of Monday's log
+
+Egg sandwich was removed from lunch of Monday's log
