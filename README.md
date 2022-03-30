@@ -50,4 +50,4 @@ days and meal type, and the classes with the field of type ToolMenu can then add
 field
 - make an interface named Tool that implements ActionListener, and make AddMealTool, DeleteFoodTool, EditServingsTool 
 and ViewMealTool implement Tool. The Tool interface would have the method constructPanel that the 4 classes have to implement
-to construct panels specific to their functionality. 
+to construct panels specific to their functionality. The tool interface would also have a field of type MealTracker
