@@ -39,3 +39,15 @@ Egg sandwich was added to lunch of Monday's log
 steak was added to dinner of Monday's log
 
 Egg sandwich was removed from lunch of Monday's log
+
+#Phase 4: Task 3
+
+If I had more time with the project I would probably do some refactoring to reduce duplication. I would:
+
+- make Tool Menu a normal class that extends Jframe and make AddMealTool, DeleteFoodTool, EditServingsTool and 
+ViewMealTool each have a field of type Tool Menu. The ToolMenu class would have the panels with the jradio buttons for 
+days and meal type, and the classes with the field of type ToolMenu can then add their own functionality to their ToolMenu 
+field
+- make an interface named Tool that implements ActionListener, and make AddMealTool, DeleteFoodTool, EditServingsTool 
+and ViewMealTool implement Tool. The Tool interface would have the method constructPanel that the 4 classes have to implement
+to construct panels specific to their functionality. 

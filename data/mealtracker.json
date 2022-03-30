@@ -2,17 +2,14 @@
     "week": "My Meal Tracker",
     "logs": [
         {"Monday": [
-            {"breakfast": [
-                {
-                    "servings": 2,
-                    "food name": "food"
-                },
-                {
-                    "servings": 1,
-                    "food name": "hi"
-                }
-            ]},
-            {"lunch": []},
+            {"breakfast": [{
+                "servings": 1,
+                "food name": "bagel with avocado and egg and bacon"
+            }]},
+            {"lunch": [{
+                "servings": 2,
+                "food name": "ramen"
+            }]},
             {"dinner": []},
             {"snacks": []}
         ]},
