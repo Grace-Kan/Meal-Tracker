@@ -32,13 +32,11 @@ of yourself can benefit many people and help them achieve a healthier lifestyle.
 - As a user I want to be able to load my meals of the week from file
 
 #Phase 4: Task 2
-bread was added to breakfast of Monday's log
+food was added to breakfast of Monday's log on Thu Mar 31 16:21:58 PDT 2022
 
-Egg sandwich was added to lunch of Monday's log
+eggs was added to breakfast of Monday's log on Thu Mar 31 16:22:04 PDT 2022
 
-steak was added to dinner of Monday's log
-
-Egg sandwich was removed from lunch of Monday's log
+food was removed from breakfast of Monday's log on Thu Mar 31 16:22:11 PDT 2022
 
 #Phase 4: Task 3
 
