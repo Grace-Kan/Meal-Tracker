@@ -94,20 +94,13 @@ public class MealTrackerUI implements ActionListener {
         frame.setVisible(true);
         frame.setSize(500, 400);
         frame.addWindowListener(new WindowAdapter() {
-            @Override
             public void windowClosing(WindowEvent e) {
-                System.out.println(makeEventString());
+                for (Event event : EventLog.getInstance()) {
+                    System.out.println(event.getDescription() + " on " + event.getDate());
+                }
                 e.getWindow().dispose();
             }
         });
-    }
-
-    private static String makeEventString() {
-        String s = "";
-        for (Event e : EventLog.getInstance()) {
-            s = s + e.getDescription() + "\n";
-        }
-        return s;
     }
 
     // MODIFIES: this
