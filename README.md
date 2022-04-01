@@ -31,7 +31,7 @@ of yourself can benefit many people and help them achieve a healthier lifestyle.
 - As a user I want to be able to save my meals of the week to file
 - As a user I want to be able to load my meals of the week from file
 
-##Phase 4: Task 2
+## Phase 4: Task 2
 food was added to breakfast of Monday's log on Fri Apr 01 14:17:14 PDT 2022
 
 bread was added to breakfast of Monday's log on Fri Apr 01 14:17:21 PDT 2022
@@ -40,7 +40,7 @@ food was removed from breakfast of Monday's log on Fri Apr 01 14:17:29 PDT 2022
 
 1 servings added to bread on Fri Apr 01 14:17:36 PDT 2022
 
-##Phase 4: Task 3
+## Phase 4: Task 3
 
 If I had more time with the project I would probably do some refactoring to reduce coupling and make some of the classes
 more cohesive. I would:
