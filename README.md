@@ -40,13 +40,14 @@ food was removed from breakfast of Monday's log on Thu Mar 31 16:22:11 PDT 2022
 
 #Phase 4: Task 3
 
-If I had more time with the project I would probably do some refactoring to reduce duplication. I would:
+If I had more time with the project I would probably do some refactoring to reduce coupling and make some of the classes
+more cohesive. I would:
 
-- make Tool Menu a normal class that extends JFrame and make AddMealTool, DeleteFoodTool, EditServingsTool and 
-ViewMealTool each have a field of type Tool Menu. The ToolMenu class would have the panels with the jradio buttons for 
+- make Tool Menu a normal class that extends JFrame. The ToolMenu class would have the panels with the jradio buttons for 
 days and meal type, and the classes with the field of type ToolMenu can then add their own functionality to their ToolMenu 
-field
+field. This would hopefully make AddMealTool, DeleteFoodTool, EditServingsTool, and ViewMealTool more cohesive.
 - make an interface named Tool that implements ActionListener, and make AddMealTool, DeleteFoodTool, EditServingsTool 
 and ViewMealTool implement Tool. The Tool interface would have the method constructPanel that the 4 classes have to implement
-to construct panels specific to their functionality. The tool interface would also have a field of type MealTracker that the classes
-will inherit.                       
+to construct panels specific to their functionality, as well their own implementation of actionPerformed.
+The tool interface would also have a field of type MealTracker and a field of ToolMenu 
+that the classes will inherit.                       
