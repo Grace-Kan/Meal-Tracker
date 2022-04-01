@@ -58,6 +58,7 @@ public class Meals {
         for (FoodItem fi : getAllMealsByMealTypes(mealType)) {
             if (fi.getFoodTitle().equals(foodTitle)) {
                 fi.changeServings(Double.parseDouble(serving));
+                EventLog.getInstance().logEvent(new Event(serving + " servings added to " + foodTitle));
             }
         }
     }
