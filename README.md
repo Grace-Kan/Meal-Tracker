@@ -42,10 +42,11 @@ food was removed from breakfast of Monday's log on Thu Mar 31 16:22:11 PDT 2022
 
 If I had more time with the project I would probably do some refactoring to reduce duplication. I would:
 
-- make Tool Menu a normal class that extends Jframe and make AddMealTool, DeleteFoodTool, EditServingsTool and 
+- make Tool Menu a normal class that extends JFrame and make AddMealTool, DeleteFoodTool, EditServingsTool and 
 ViewMealTool each have a field of type Tool Menu. The ToolMenu class would have the panels with the jradio buttons for 
 days and meal type, and the classes with the field of type ToolMenu can then add their own functionality to their ToolMenu 
 field
 - make an interface named Tool that implements ActionListener, and make AddMealTool, DeleteFoodTool, EditServingsTool 
 and ViewMealTool implement Tool. The Tool interface would have the method constructPanel that the 4 classes have to implement
-to construct panels specific to their functionality. The tool interface would also have a field of type MealTracker
+to construct panels specific to their functionality. The tool interface would also have a field of type MealTracker that the classes
+will inherit.                       
